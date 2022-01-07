@@ -8,20 +8,37 @@ export async function getUser() {
 }
 
 export async function getItems() {
+    const response = await client
+        .from('shop_list')
+        .select();
 
+    return checkError(response);
 }
 
-// export async function createItem(item) {
+export async function createItem(item, amount) {
+    const response = await client
+        .from('shop_list')
+        .insert([{ item, amount }]);
 
-// }
+    return checkError(response);
+}
 
-// export async function buyItem(item) {
+export async function buyItem(item) {
+    const response = await client
+        .from('shop_list')
+        .update({ bought: true })
+        .match({ id: item });
 
-// }
+    return checkError(response);
+}
 
-// export async function deleteAllItems() {
+export async function deleteAllItems() {
+    const response = await client
+        .from('shop_list')
+        .delete();
 
-// }
+    return checkError(response);
+}
 
 
 export async function checkAuth() {
