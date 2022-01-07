@@ -19,7 +19,7 @@ signUpForm.addEventListener('submit', async(event)=>{
     event.preventDefault();
     const user = await signupUser(signUpEmail.value, signUpPassword.value);
 
-    if (user){
+    if (user) {
         redirectIfLoggedIn();
     } else {
         console.error(user);
@@ -30,7 +30,7 @@ signInForm.addEventListener('submit', async(event)=>{
     event.preventDefault();
     const user = await signInUser(signInEmail.value, signInPassword.value);
   
-    if (user){
+    if (user) {
         redirectIfLoggedIn();
     } else {
         console.error(user);
